@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+:root {
+  --green: rgb(9, 114, 53);
+}
+* {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
+}
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+*::selection {
+  background: var(--green);
+  color: #fff;
+}
+
+.header__logo {
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+}
+
+.logo {
+  color: black;
+  font-weight: bolder;
+  font-size: 3rem;
+}
+
+.logo i {
+  padding-right: 0.5rem;
+  color: var(--green);
+}
+
+.header__buscador {
+  display: flex;
+  height: 5rem;
+}
+
+.header__buscador #buscador {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  font-size: 2rem;
+  color: #333;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  text-transform: none;
+}
+.header__buscador label {
+  height: 100%;
+  width: 8rem;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  color: black;
+  background: var(--green);
+  text-align: center;
+  cursor: pointer;
+}
+.header__buscador label:hover {
+  background: black;
+  color: var(--green);
+}
+.header__nav {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.navbar a {
+  padding: 0.5rem 1.5rem;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  color: black;
+}
+.navbar a:hover {
+  background: var(--green);
+  color: #fff;
+}
+.iconos a {
+  font-size: 3rem;
+  color: black;
+  padding-left: 1rem;
+}
+.iconos a:hover {
+  color: var(--green);
+}
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.home img {
+  object-fit: cover;
+  height: 100vh;
+  width: 100vw;
+}
+.home .content {
+  position: absolute;
+}
+.home .content span {
+  font-size: 3rem;
+  color: black;
+}
+.home .content a {
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  background: var(--green);
+  color: #fff;
+  padding: 0.8rem 3rem;
+  font-size: 1.7rem;
+  text-align: center;
+  cursor: pointer;
+}
+.home .content a:hover {
+  background: black;
+}
