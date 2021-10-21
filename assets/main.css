@@ -80,6 +80,14 @@ html {
   padding: 2rem 9%;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+.header__nav.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
 .navbar a {
   padding: 0.5rem 1.5rem;
   font-size: 2rem;
@@ -114,11 +122,13 @@ html {
 }
 .home .content span {
   font-size: 3rem;
-  color: black;
+  color: whitesmoke;
 }
 .home .content a {
   font-size: 5rem;
+  width: 20rem;
   display: flex;
+  align-items: center;
   justify-content: center;
   margin-top: 1rem;
   background: var(--green);
@@ -127,7 +137,87 @@ html {
   font-size: 1.7rem;
   text-align: center;
   cursor: pointer;
+  border-radius: 0.5rem;
+}
+.home .content h3 {
+  display: flex;
+  justify-content: center;
 }
 .home .content a:hover {
   background: black;
+}
+
+.productos-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem 9%;
+}
+.productos-ind {
+  flex: 1 1 30rem;
+  text-align: center;
+  padding: 2rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+.productos-ind img {
+  height: 20rem;
+}
+.productos-ind h3 {
+  color: black;
+  font-size: 2.5rem;
+}
+.estrellas {
+  padding: 1rem 0.1rem;
+  font-size: 1.7rem;
+  color: var(--green);
+}
+.precio {
+  font-size: 2rem;
+  color: #333;
+  padding: 0.5rem;
+}
+.cantidad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+}
+.cantidad span {
+  padding: 0 0.7rem;
+  font-size: 1.7rem;
+}
+.cantidad input {
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: black;
+  padding: 0.5rem;
+  width: 5rem;
+  background: rgba(0, 0, 0, 0.05);
+}
+.productos-ind button {
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  background: var(--green);
+  color: #fff;
+  padding: 0.8rem 3rem;
+  font-size: 1.7rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+.productos-ind button:hover {
+  background-color: black;
+}
+.titulo {
+  text-align: center;
+  font-size: 5rem;
+  padding: 5rem;
+}
+.titulo span {
+  color: var(--green);
 }
