@@ -98,12 +98,13 @@ html {
   background: var(--green);
   color: #fff;
 }
-.iconos a {
+.carrito a {
+  margin: 1rem;
   font-size: 3rem;
   color: black;
   padding-left: 1rem;
 }
-.iconos a:hover {
+.carrito a:hover {
   color: var(--green);
 }
 .home {
@@ -174,7 +175,9 @@ html {
   font-size: 1.7rem;
   color: var(--green);
 }
-.precio {
+.precios {
+  display: flex;
+  justify-content: center;
   font-size: 2rem;
   color: #333;
   padding: 0.5rem;
@@ -209,6 +212,8 @@ html {
   text-align: center;
   cursor: pointer;
   border-radius: 0.5rem;
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
 }
 .productos-ind button:hover {
   background-color: black;
@@ -220,4 +225,82 @@ html {
 }
 .titulo span {
   color: var(--green);
+}
+
+.carrito {
+  position: relative;
+}
+.carrito .table {
+  display: none;
+}
+
+.header__nav:hover .table {
+  display: block;
+  position: absolute;
+  color: black;
+  right: 0;
+  top: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  padding: 2rem;
+  margin: 1rem;
+}
+
+.vaciar-carrito {
+  text-align: center;
+  margin-top: 1rem;
+  background: var(--green);
+  color: #fff;
+  padding: 1rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+.botones {
+  display: flex;
+  justify-content: space-around;
+}
+.img-carrito {
+  height: 10rem;
+}
+.cantidad-tabla {
+  text-align: center;
+}
+.btn-tabla {
+  text-align: center;
+}
+.btn-carrito-agregar {
+  background: var(--green);
+  color: #fff;
+  padding: 0.7rem;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+.btn-carrito-eliminar {
+  background: red;
+  color: #fff;
+  padding: 0.7rem;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+#vaciar-carrito,
+#comprar-carrito {
+  margin: 2rem;
+  background: var(--green);
+  color: #fff;
+  padding: 0.7rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+#vaciar-carrito {
+  margin: 2rem;
+  background: red;
+  color: #fff;
+  padding: 0.7rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
 }

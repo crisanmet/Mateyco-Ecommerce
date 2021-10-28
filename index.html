@@ -1,65 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--Mi css-->
-    <link rel="stylesheet" href="assets/main.css" />
-    <!--Font Awesome-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>MateYCo</title>
-  </head>
-  <body>
-    <header>
-      <div class="header__logo">
-        <a href="#" class="logo"
-          ><i class="fas fa-shopping-basket"></i>MateYCo</a
-        >
-        <form action="" class="header__buscador">
-          <input
-            type="search"
-            name="search"
-            id="buscador"
-            placeholder="Buscar aquí..."
-            autocomplete="off"
-          />
-          <label for="search" class="fas fa-search"></label>
-        </form>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Mi css-->
+  <link rel="stylesheet" href="assets/main.css" />
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>MateYCo</title>
+</head>
+
+<body>
+  <header>
+    <div class="header__logo">
+      <a href="#" class="logo"><i class="fas fa-shopping-basket"></i>MateYCo</a>
+      <form action="" class="header__buscador">
+        <input type="search" name="search" id="buscador" placeholder="Buscar aquí..." autocomplete="off" />
+        <label for="search" class="fas fa-search"></label>
+      </form>
+    </div>
+    <div class="header__nav">
+      <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#productos">Productos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="carrito">
+        <a href="#" class="fas fa-shopping-cart icono"></a>
+        <table border class="table">
+          <thead>
+            <tr>
+              <th scope="col">Imagen</th>
+              <th scope="col">Item</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Acción</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody id="articulos-tabla"></tbody>
+          <tfoot id="footer-tabla">
+            </tr>
+          </tfoot>
+        </table>
       </div>
-      <div class="header__nav">
-        <nav class="navbar">
-          <a href="#home">Home</a>
-          <a href="#productos">Productos</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
-        <div class="iconos">
-          <a href="#" class="fas fa-shopping-cart"></a>
-          <a href="#" class="fas fa-user-circle"></a>
+    </div>
+  </header>
+  <section class="home" id="home">
+    <div class="image">
+      <img src="assets/img/mate.jpg" alt="mate" />
+    </div>
+    <div class="content">
+      <span>¿Salen unos MATEYCOS?</span>
+      <h3><a href="#productos">Conocé mas</a></h3>
+    </div>
+  </section>
+  <section class="productos" id="productos">
+    <h2 class="titulo">Nuestras <span>Yerbas 🍃</span></h1>
+      <div class="productos-contenedor">
+      </div>
+      <template class="template-productos">
+        <div class="productos-ind">
+          <img src="" alt="">
+          <h3></h3>
+          <div class="estrellas">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="precios">
+            <span>$</span>
+            <p class="precio"></p>
+          </div>
+          <div class="cantidad">
+            <span>Cantidad:</span>
+            <input type="number" min="1" max="1000" value="1" name="" id="" class="cantidad">
+            <span>/Kg</span>
+          </div>
+          <button type="button" class="btn">Agregar al Carrito</button>
         </div>
-      </div>
-    </header>
-    <section class="home" id="home">
-      <div class="image">
-        <img src="assets/img/mate.jpg" alt="mate" />
-      </div>
-      <div class="content">
-        <span>¿Salen unos MATEYCOS?</span>
-        <h3><a href="#productos">Conocé mas</a></h3>
-      </div>
-    </section>
-    <section class="productos" id="productos">
-      <h2 class="titulo">Nuestras <span>Yerbas 🍃</span></h1>
-        <div class="productos-contenedor">
-        </div>
-    </section>
-    <script src="assets/main.js"></script>
-  </body>
+      </template>
+      
+      <template class="template-footer">
+        <tr>
+          <td colspan="2">
+            Total productos
+          </td>
+          <td colspan="2"></td>
+          <td>$<span></span></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button id="comprar-carrito" class="realizar">
+              Comprar
+            </button>
+          </td>
+          <td colspan="2">
+            <button id="vaciar-carrito">
+              Vaciar
+            </button>  
+          </td>      
+        </tr>
+      </template>
+
+      <template class="template-carrito">
+        <tr>
+          <td><img src="" alt="" class="img-carrito"></td>
+          <td></td>
+          <td class="cantidad-tabla"></td>
+          <td class="btn-tabla">
+            <button class="btn-carrito-agregar">
+              +
+            </button>
+            <button class="btn-carrito-eliminar">
+              -
+            </button>
+          </td>
+          <td colspan="2">$<span></span></td>
+        </tr>
+      </template>
+
+  </section>
+  <script src="assets/main.js"></script>
+</body>
+
 </html>
