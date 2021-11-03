@@ -28,7 +28,7 @@ const arrayProductos = [
 ];
 const $contenedorProductos = document.querySelector(".productos-contenedor");
 const $fragment = document.createDocumentFragment();
-const $template = document.querySelector(".template-productos").content;
+
 const $templateFooter = document.querySelector(".template-footer").content;
 const $templateCarrito = document.querySelector(".template-carrito").content;
 const $items = document.querySelector("#articulos-tabla");
@@ -36,17 +36,39 @@ const $footer = document.querySelector("#footer-tabla");
 
 let carritoDeCompra = JSON.parse(localStorage.getItem("carrito")) || {};
 
-//CARGA DINAMICA DE LOS ARTICULOS MEDIANTE TEMPLATE Y FRAGMENT
-arrayProductos.forEach((producto) => {
-  $template.querySelector("h3").textContent = producto.nombre;
-  $template.querySelector("p").textContent = producto.precio;
-  $template.querySelector("button").dataset.id = producto.id;
-  $template.querySelector("img").setAttribute("src", producto.img);
+//CARGA DINAMICA DE LOS ARTICULOS MEDIANTE jquery
 
-  const clon = $template.cloneNode(true);
-  $fragment.appendChild(clon);
+const cargarProductos = () => {
+  arrayProductos.forEach((art) => {
+    $(".productos-contenedor").append(`
+  
+    <div class="productos-ind">
+      <img src="${art.img}" alt="">
+      <h3>${art.nombre}</h3>
+      <div class="estrellas">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="precios">
+        <span>$${art.precio}</span>
+        <p class="precio"></p>
+      </div>
+      <div class="cantidad">
+        <span>Cantidad:</span>
+        <input type="number" min="1" max="1000" value="1" name="" id="" class="cantidad">
+        <span>/Kg</span>
+      </div>
+      <button type="button" class="btn" id="${art.id}">Agregar al Carrito</button>
+    </div>
+  `);
+  });
+};
+$("document").ready(() => {
+  cargarProductos();
 });
-$contenedorProductos.appendChild($fragment);
 
 $contenedorProductos.addEventListener("click", (e) => {
   agregarArticulo(e);
