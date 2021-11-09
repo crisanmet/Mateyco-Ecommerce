@@ -1,31 +1,3 @@
-const arrayProductos = [
-  {
-    id: 1,
-    img: "assets/img/porongo.png",
-    nombre: "Yerba Porongo",
-    precio: 499,
-  },
-  {
-    id: 2,
-    img: "assets/img/playadito.jpg",
-    nombre: "Yerba Playadito",
-    precio: 399,
-  },
-  {
-    id: 3,
-    img: "assets/img/andresito.jpg",
-    nombre: "Yerba Andresito",
-    precio: 299,
-  },
-  { id: 4, img: "assets/img/pipore.jpg", nombre: "Yerba Piporé", precio: 299 },
-  { id: 5, img: "assets/img/cbse.jpg", nombre: "Yerba CBSé", precio: 199 },
-  {
-    id: 6,
-    img: "assets/img/chamigo.png",
-    nombre: "Yerba Chamigo",
-    precio: 699,
-  },
-];
 const $contenedorProductos = document.querySelector(".productos-contenedor");
 const $fragment = document.createDocumentFragment();
 
@@ -38,10 +10,10 @@ let carritoDeCompra = JSON.parse(localStorage.getItem("carrito")) || {};
 
 //CARGA DINAMICA DE LOS ARTICULOS MEDIANTE jquery
 
-const cargarProductos = () => {
-  arrayProductos.forEach((art) => {
+const cargarProductos = (productos) => {
+  productos.forEach((art) => {
     $(".productos-contenedor").append(`
-  
+
     <div class="productos-ind">
       <img src="${art.img}" alt="">
       <h3>${art.nombre}</h3>
@@ -66,14 +38,22 @@ const cargarProductos = () => {
   `);
   });
 };
-$("document").ready(() => {
-  cargarProductos();
+
+//CARGA DINAMICA DE LOS ARTICULOS MEDIANTE AJAX/JQUERY
+$.get("./productos.json", (res) => {
+  cargarProductos(res);
 });
+
+// $("document").ready(() => {
+//   //cargarProductos();
+// });
 
 $contenedorProductos.addEventListener("click", (e) => {
   agregarArticulo(e);
   e.stopPropagation();
 });
+
+$(".logo").fadeOut(1000).fadeIn(2000).css("color", "green");
 
 const agregarArticulo = (e) => {
   if (e.target.classList.contains("btn")) {
