@@ -1,31 +1,3 @@
-const arrayProductos = [
-  {
-    id: 1,
-    img: "assets/img/porongo.png",
-    nombre: "Yerba Porongo",
-    precio: 499,
-  },
-  {
-    id: 2,
-    img: "assets/img/playadito.jpg",
-    nombre: "Yerba Playadito",
-    precio: 399,
-  },
-  {
-    id: 3,
-    img: "assets/img/andresito.jpg",
-    nombre: "Yerba Andresito",
-    precio: 299,
-  },
-  { id: 4, img: "assets/img/pipore.jpg", nombre: "Yerba Piporé", precio: 299 },
-  { id: 5, img: "assets/img/cbse.jpg", nombre: "Yerba CBSé", precio: 199 },
-  {
-    id: 6,
-    img: "assets/img/chamigo.png",
-    nombre: "Yerba Chamigo",
-    precio: 699,
-  },
-];
 const $contenedorProductos = document.querySelector(".productos-contenedor");
 const $fragment = document.createDocumentFragment();
 const $template = document.querySelector(".template-productos").content;
@@ -36,17 +8,28 @@ const $footer = document.querySelector("#footer-tabla");
 
 let carritoDeCompra = JSON.parse(localStorage.getItem("carrito")) || {};
 
-//CARGA DINAMICA DE LOS ARTICULOS MEDIANTE TEMPLATE Y FRAGMENT
-arrayProductos.forEach((producto) => {
-  $template.querySelector("h3").textContent = producto.nombre;
-  $template.querySelector("p").textContent = producto.precio;
-  $template.querySelector("button").dataset.id = producto.id;
-  $template.querySelector("img").setAttribute("src", producto.img);
-
-  const clon = $template.cloneNode(true);
-  $fragment.appendChild(clon);
+document.addEventListener("DOMContentLoaded", () => {
+  llamarProductos();
 });
-$contenedorProductos.appendChild($fragment);
+
+const llamarProductos = () => {
+  fetch("../productos.json")
+    .then((res) => res.json())
+    .then((productos) => cargarProductos(productos));
+};
+
+const cargarProductos = (productos) => {
+  productos.forEach((producto) => {
+    $template.querySelector("h3").textContent = producto.nombre;
+    $template.querySelector("p").textContent = producto.precio;
+    $template.querySelector("button").dataset.id = producto.id;
+    $template.querySelector("img").setAttribute("src", producto.img);
+
+    const clon = $template.cloneNode(true);
+    $fragment.appendChild(clon);
+  });
+  $contenedorProductos.appendChild($fragment);
+};
 
 $contenedorProductos.addEventListener("click", (e) => {
   agregarArticulo(e);
