@@ -1,34 +1,6 @@
-const arrayProductos = [
-  {
-    id: 1,
-    img: "assets/img/porongo.png",
-    nombre: "Yerba Porongo",
-    precio: 499,
-  },
-  {
-    id: 2,
-    img: "assets/img/playadito.jpg",
-    nombre: "Yerba Playadito",
-    precio: 399,
-  },
-  {
-    id: 3,
-    img: "assets/img/andresito.jpg",
-    nombre: "Yerba Andresito",
-    precio: 299,
-  },
-  { id: 4, img: "assets/img/pipore.jpg", nombre: "Yerba Piporé", precio: 299 },
-  { id: 5, img: "assets/img/cbse.jpg", nombre: "Yerba CBSé", precio: 199 },
-  {
-    id: 6,
-    img: "assets/img/chamigo.png",
-    nombre: "Yerba Chamigo",
-    precio: 699,
-  },
-];
 const $contenedorProductos = document.querySelector(".productos-contenedor");
 const $fragment = document.createDocumentFragment();
-const $template = document.querySelector(".template-productos").content;
+
 const $templateFooter = document.querySelector(".template-footer").content;
 const $templateCarrito = document.querySelector(".template-carrito").content;
 const $items = document.querySelector("#articulos-tabla");
@@ -36,22 +8,52 @@ const $footer = document.querySelector("#footer-tabla");
 
 let carritoDeCompra = JSON.parse(localStorage.getItem("carrito")) || {};
 
-//CARGA DINAMICA DE LOS ARTICULOS MEDIANTE TEMPLATE Y FRAGMENT
-arrayProductos.forEach((producto) => {
-  $template.querySelector("h3").textContent = producto.nombre;
-  $template.querySelector("p").textContent = producto.precio;
-  $template.querySelector("button").dataset.id = producto.id;
-  $template.querySelector("img").setAttribute("src", producto.img);
+//CARGA DINAMICA DE LOS ARTICULOS MEDIANTE jquery
 
-  const clon = $template.cloneNode(true);
-  $fragment.appendChild(clon);
+const cargarProductos = (productos) => {
+  productos.forEach((art) => {
+    $(".productos-contenedor").append(`
+
+    <div class="productos-ind">
+      <img src="${art.img}" alt="">
+      <h3>${art.nombre}</h3>
+      <div class="estrellas">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="precios">
+        <span>$${art.precio}</span>
+        <p class="precio"></p>
+      </div>
+      <div class="cantidad">
+        <span>Cantidad:</span>
+        <input type="number" min="1" max="1000" value="1" name="" id="" class="cantidad">
+        <span>/Kg</span>
+      </div>
+      <button type="button" class="btn" id="${art.id}">Agregar al Carrito</button>
+    </div>
+  `);
+  });
+};
+
+//CARGA DINAMICA DE LOS ARTICULOS MEDIANTE AJAX/JQUERY
+$.get("./productos.json", (res) => {
+  cargarProductos(res);
 });
-$contenedorProductos.appendChild($fragment);
+
+// $("document").ready(() => {
+//   //cargarProductos();
+// });
 
 $contenedorProductos.addEventListener("click", (e) => {
   agregarArticulo(e);
   e.stopPropagation();
 });
+
+$(".logo").fadeOut(1000).fadeIn(2000).css("color", "green");
 
 const agregarArticulo = (e) => {
   if (e.target.classList.contains("btn")) {
