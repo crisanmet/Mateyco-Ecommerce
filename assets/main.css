@@ -80,7 +80,7 @@ html {
   padding: 2rem 9%;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
-.header__nav.active {
+header {
   position: fixed;
   top: 0;
   left: 0;
@@ -233,6 +233,9 @@ html {
 .carrito .table {
   display: none;
 }
+.carrito-contador {
+  color: red;
+}
 
 .header__nav:hover .table {
   display: block;
@@ -303,4 +306,10 @@ html {
   font-size: 1.5rem;
   cursor: pointer;
   border-radius: 0.5rem;
+}
+
+.filter {
+  visibility: hidden;
+  opacity: 0;
+  order: 1;
 }

@@ -5,6 +5,8 @@ const $templateFooter = document.querySelector(".template-footer").content;
 const $templateCarrito = document.querySelector(".template-carrito").content;
 const $items = document.querySelector("#articulos-tabla");
 const $footer = document.querySelector("#footer-tabla");
+const $carritoContador = document.querySelector(".carrito-contador");
+const $buscador = document.querySelector("#buscador");
 
 let carritoDeCompra = JSON.parse(localStorage.getItem("carrito")) || {};
 
@@ -96,6 +98,7 @@ const renderizarFooter = () => {
     (acum, { cantidad, precio }) => acum + cantidad * precio,
     0
   );
+  $carritoContador.textContent = totalCarritoCantidades;
   $templateFooter.querySelectorAll("td")[1].textContent =
     totalCarritoCantidades;
   $templateFooter.querySelector("span").textContent = totalCarritoPrecio;
@@ -119,6 +122,7 @@ const renderizarFooter = () => {
 
 const vaciarCarrito = () => {
   carritoDeCompra = {};
+  $carritoContador.textContent = ``;
   renderizarCarrito();
 };
 
@@ -139,11 +143,19 @@ const btnAumentarOdisminuir = (e) => {
     if (articulo.cantidad === 0) {
       delete carritoDeCompra[e.target.dataset.id];
     }
-
+    p;
     renderizarCarrito();
   }
   e.stopPropagation();
 };
+
+$buscador.addEventListener("keyup", (e) => {
+  document.querySelectorAll(".productos-ind").forEach((el) => {
+    el.textContent.toLowerCase().includes(e.target.value)
+      ? el.classList.remove("filter")
+      : el.classList.add("filter");
+  });
+});
 
 //WINDOW ONSCROLL- PARA HEADER FIJO.
 const $header = document.querySelector(".header__nav");
