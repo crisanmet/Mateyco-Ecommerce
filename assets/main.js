@@ -1,10 +1,10 @@
-const $contenedorProductos = document.querySelector(".productos-contenedor");
+const $contenedorProductos = $(".productos-contenedor");
 const $fragment = document.createDocumentFragment();
 
-const $templateFooter = document.querySelector(".template-footer").content;
-const $templateCarrito = document.querySelector(".template-carrito").content;
-const $items = document.querySelector("#articulos-tabla");
-const $footer = document.querySelector("#footer-tabla");
+const $templateFooter = $(".template-footer");
+const $templateCarrito = $(".template-carrito");
+const $items = $("#articulos-tabla");
+const $footer = $("#footer-tabla");
 
 let carritoDeCompra = JSON.parse(localStorage.getItem("carrito")) || {};
 
@@ -12,7 +12,7 @@ let carritoDeCompra = JSON.parse(localStorage.getItem("carrito")) || {};
 
 const cargarProductos = (productos) => {
   productos.forEach((art) => {
-    $(".productos-contenedor").append(`
+    $contenedorProductos.append(`
 
     <div class="productos-ind">
       <img src="${art.img}" alt="">
@@ -44,11 +44,7 @@ $.get("./productos.json", (res) => {
   cargarProductos(res);
 });
 
-// $("document").ready(() => {
-//   //cargarProductos();
-// });
-
-$contenedorProductos.addEventListener("click", (e) => {
+$contenedorProductos.on("click", (e) => {
   agregarArticulo(e);
   e.stopPropagation();
 });
@@ -141,7 +137,7 @@ const vaciarCarrito = () => {
   renderizarCarrito();
 };
 
-$items.addEventListener("click", (e) => {
+$items.on("click", (e) => {
   btnAumentarOdisminuir(e);
 });
 
