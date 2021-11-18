@@ -15,11 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const llamarProductos = () => {
-  fetch("../productos.json", {
-    headers: {
-      Accept: "application/json",
-    },
-  })
+  fetch("./productos.json")
     .then((res) => res.json())
     .then((productos) => cargarProductos(productos))
     .catch((err) => {
